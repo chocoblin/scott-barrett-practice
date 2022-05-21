@@ -1,9 +1,3 @@
-from random import randrange
-import re
-from tkinter.messagebox import NO
-from xml.etree.ElementInclude import include
-
-
 class Node:
     def __init__(self, value):
         self.value = value
