@@ -1,3 +1,8 @@
+from tempfile import tempdir
+from sklearn.utils import indexable
+from sympy import re
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -121,7 +126,23 @@ class LinkedList:
             temp = temp.next
         return temp
 
+    # def set_value(self, value, index):
+    #     #check if valid index
+    #     if index <0 or index > self.length :
+    #         return None
+    #     temp = self.head
+    #     #this will set temp as the node at given index
+    #     for _ in range (index):    
+    #         temp = temp.next
+    #     temp.value = value
+    #     return True
 
+    def set_value(self, value, index):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
 
 
 
