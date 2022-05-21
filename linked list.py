@@ -126,7 +126,7 @@ class LinkedList:
             temp = temp.next
         return temp
 
-    # def set_value(self, value, index):
+    # def set_value(self, index, value):
     #     #check if valid index
     #     if index <0 or index > self.length :
     #         return None
@@ -137,7 +137,7 @@ class LinkedList:
     #     temp.value = value
     #     return True
 
-    def set_value(self, value, index):
+    def set_value(self, index, value):
         temp = self.get(index)
         if temp:
             temp.value = value
@@ -155,4 +155,6 @@ my_linked_list.print_list()
 my_linked_list.prepend(4)
 my_linked_list.print_list()
 my_linked_list.pop_first()
+my_linked_list.print_list()
+my_linked_list.set_value(0,7)
 my_linked_list.print_list()
