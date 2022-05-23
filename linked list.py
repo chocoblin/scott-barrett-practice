@@ -1,8 +1,3 @@
-from tempfile import tempdir
-from sklearn.utils import indexable
-from sympy import re
-
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -144,7 +139,24 @@ class LinkedList:
             return True
         return False
 
-
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        elif index ==0:
+            return self.prepend(value)
+        elif index == self.length:
+            return self.append(value)
+        
+        new_node = Node(value)
+        
+        #multiple elements
+        temp = self.get(index-1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length+=1
+        return True
+    
+   
 
 my_linked_list = LinkedList(3)
 my_linked_list.print_list()
@@ -157,4 +169,10 @@ my_linked_list.print_list()
 my_linked_list.pop_first()
 my_linked_list.print_list()
 my_linked_list.set_value(0,7)
+my_linked_list.print_list()
+my_linked_list.append(8)
+my_linked_list.append(9)
+my_linked_list.prepend(6)
+my_linked_list.print_list()
+my_linked_list.insert(2,1)
 my_linked_list.print_list()
