@@ -1,6 +1,3 @@
-from tempfile import TemporaryDirectory, tempdir
-
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -18,7 +15,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        print("\n")
+        print(str(self.head.value) + str(self.tail.value)+"\n")
 
     def append(self, value):
         new_node = Node(value)
@@ -172,8 +169,24 @@ class LinkedList:
         temp = pre.next
         pre.next = temp.next
         return True
+    
 
-   
+    def reverse(self):
+        #switch head and tail
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        #introduce after and before temp variables
+        after = self.head         
+        before = None
+        #run a loop
+        for _ in range (self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
+
 my_linked_list = LinkedList(3)
 my_linked_list.print_list()
 
@@ -201,4 +214,7 @@ my_linked_list.insert(2,1)
 my_linked_list.print_list()
 
 my_linked_list.remove(2)
+my_linked_list.print_list()
+
+my_linked_list.reverse()
 my_linked_list.print_list()
