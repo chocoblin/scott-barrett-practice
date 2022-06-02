@@ -20,11 +20,9 @@ class DoublyLinkedList:
 
     def append(self, value):
         new_node = Node(value)
-        #case 1 empty list
         if self.head is None:
             self.head = new_node
             self.tail = new_node
-        #case 2 at least 1 element present
         else:
             self.tail.next = new_node
             new_node.prev = self.tail
@@ -34,20 +32,31 @@ class DoublyLinkedList:
         return True
 
     def pop(self):
-        #case 1 no item
         if self.length==0:
             return None
-        #case 2 if originally only 1 element
         if self.length==1:          
             self.head = None
             self.tail = None 
-        #case 3 2 or more
-        temp = self.tail
-        self.tail = self.tail.prev
-        self.tail.next = None
-        temp.prev = None
+        else:
+            temp = self.tail
+            self.tail = self.tail.prev
+            self.tail.next = None
+            temp.prev = None
         self.length-=1
         return temp.value
+
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length==0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head.prev = new_node
+            self.head = new_node
+        self.length+=1
+        return True
+    
 
 my_doubly_linked_list = DoublyLinkedList(6)
 my_doubly_linked_list.print_list()
@@ -56,4 +65,7 @@ my_doubly_linked_list.append(7)
 my_doubly_linked_list.print_list()
 
 my_doubly_linked_list.pop()
+my_doubly_linked_list.print_list()
+
+my_doubly_linked_list.prepend(5)
 my_doubly_linked_list.print_list()
