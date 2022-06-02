@@ -17,6 +17,7 @@ class DoublyLinkedList:
             print(temp.value)
             temp = temp.next
         print(str(self.head.value) + str(self.tail.value)+"\n")
+        #the above line obviously gives errors for no items
 
     def append(self, value):
         new_node = Node(value)
@@ -57,6 +58,19 @@ class DoublyLinkedList:
         self.length+=1
         return True
     
+    def pop_first(self):
+        if self.length==0:
+            return None
+        temp = self.head
+        if self.length==1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            temp.next = None
+            self.head.prev = None
+        self.length-=1
+        return temp.value
 
 my_doubly_linked_list = DoublyLinkedList(6)
 my_doubly_linked_list.print_list()
@@ -68,4 +82,7 @@ my_doubly_linked_list.pop()
 my_doubly_linked_list.print_list()
 
 my_doubly_linked_list.prepend(5)
+my_doubly_linked_list.print_list()
+
+my_doubly_linked_list.pop_first()
 my_doubly_linked_list.print_list()
