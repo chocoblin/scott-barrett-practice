@@ -16,7 +16,7 @@ class DoublyLinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        print(str(self.head.value) + str(self.tail.value)+"\n")
+        print(str(self.head.value) + "-" + str(self.tail.value)+"\n")
         #the above line obviously gives errors for no items
 
     def append(self, value):
@@ -72,6 +72,20 @@ class DoublyLinkedList:
         self.length-=1
         return temp.value
 
+    def get(self, index):
+        if index<0 or index>self.length:
+            return None
+        
+        if index<self.length/2:
+            temp= self.head
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length-1, index, -1):
+                temp = temp.prev
+        return temp.value
+
 my_doubly_linked_list = DoublyLinkedList(6)
 my_doubly_linked_list.print_list()
 
@@ -86,3 +100,12 @@ my_doubly_linked_list.print_list()
 
 my_doubly_linked_list.pop_first()
 my_doubly_linked_list.print_list()
+
+my_doubly_linked_list.append(7)
+my_doubly_linked_list.append(8)
+my_doubly_linked_list.append(9)
+my_doubly_linked_list.append(10)
+my_doubly_linked_list.print_list()
+
+print(my_doubly_linked_list.get(3))
+
