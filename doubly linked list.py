@@ -1,3 +1,6 @@
+from pickle import TRUE
+
+
 class Node:
     def __init__ (self, value):
         self.value = value
@@ -70,7 +73,7 @@ class DoublyLinkedList:
             temp.next = None
             self.head.prev = None
         self.length-=1
-        return temp.value
+        return temp
 
     def get(self, index):
         if index<0 or index>self.length:
@@ -84,7 +87,15 @@ class DoublyLinkedList:
             temp = self.tail
             for _ in range(self.length-1, index, -1):
                 temp = temp.prev
-        return temp.value
+        return temp
+
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+        
 
 my_doubly_linked_list = DoublyLinkedList(6)
 my_doubly_linked_list.print_list()
@@ -108,4 +119,7 @@ my_doubly_linked_list.append(10)
 my_doubly_linked_list.print_list()
 
 print(my_doubly_linked_list.get(3))
+
+my_doubly_linked_list.set_value(4,0)
+my_doubly_linked_list.print_list()
 
