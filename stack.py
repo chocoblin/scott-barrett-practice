@@ -15,6 +15,17 @@ class Stack:
             print(temp.value)
             temp = temp.next
 
+    def push(self, value):
+        new_node = Node(value)
+        
+        if self.top:
+            new_node.next = self.top
+        
+        self.top = new_node
+        self.height += 1
 
-my_Stack = Stack(3)
+my_Stack = Stack(9)
+my_Stack.print_stack()
+
+my_Stack.push(8)
 my_Stack.print_stack()
