@@ -158,7 +158,7 @@ my_doubly_linked_list.append(9)
 my_doubly_linked_list.append(10)
 my_doubly_linked_list.print_list()
 
-print(str(my_doubly_linked_list.get(3).value) + "\n")
+print(str(my_doubly_linked_list.get(3).value) +"\n")
 
 my_doubly_linked_list.set_value(4,0)
 my_doubly_linked_list.print_list()
