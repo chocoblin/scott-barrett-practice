@@ -1,7 +1,3 @@
-from sympy import re
-from urllib3 import Retry
-
-
 class Node:
     def __init__ (self, value):
         self.value = value
