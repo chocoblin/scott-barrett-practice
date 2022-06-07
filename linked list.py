@@ -114,7 +114,7 @@ class LinkedList:
 
     def get (self, index):
         #check if valid index
-        if index <0 or index > self.length :
+        if index <0 or index >= self.length :
             return None
         temp = self.head
         #this will set temp as the node at given index
@@ -158,7 +158,7 @@ class LinkedList:
         return True
     
     def remove(self, index):
-        if index < 0 or index >self.length:
+        if index < 0 or index >=self.length:
             return False
         elif index == 0:
             return self.pop_first()

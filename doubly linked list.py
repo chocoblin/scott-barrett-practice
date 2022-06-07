@@ -1,3 +1,7 @@
+from sympy import re
+from urllib3 import Retry
+
+
 class Node:
     def __init__ (self, value):
         self.value = value
@@ -73,7 +77,7 @@ class DoublyLinkedList:
         return temp
 
     def get(self, index):
-        if index<0 or index>self.length:
+        if index<0 or index>=self.length:
             return None
         
         if index<self.length/2:
@@ -94,7 +98,7 @@ class DoublyLinkedList:
         return False
         
     def insert(self, index, value):
-        if index<0 or index>self.length:
+        if index<0 or index>=self.length:
             return False
         if index==self.length:
             return self.append(index, value)
@@ -112,8 +116,26 @@ class DoublyLinkedList:
 
         self.length+=1
         return True
-        
 
+    def remove(self, index):
+        if index<0 or index >=self.length:
+            return None
+        elif index==0:
+            return self.pop_first()
+        elif index==self.length-1:
+            return self.pop()
+        else:
+            removed = self.get(index)
+            before = removed.prev
+            after = removed.next
+
+            before.next = after
+            after.prev = before
+            removed.prev =None
+            removed.next = None
+
+        self.length-=1
+        return removed
 
 my_doubly_linked_list = DoublyLinkedList(6)
 my_doubly_linked_list.print_list()
@@ -136,10 +158,15 @@ my_doubly_linked_list.append(9)
 my_doubly_linked_list.append(10)
 my_doubly_linked_list.print_list()
 
-print(my_doubly_linked_list.get(3))
+print(str(my_doubly_linked_list.get(3).value) + "\n")
 
 my_doubly_linked_list.set_value(4,0)
 my_doubly_linked_list.print_list()
 
 my_doubly_linked_list.insert(4,10)
+my_doubly_linked_list.print_list()
+
+my_doubly_linked_list.remove(4)
+my_doubly_linked_list.print_list()
+my_doubly_linked_list.remove(4)
 my_doubly_linked_list.print_list()
