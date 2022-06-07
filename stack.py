@@ -1,7 +1,3 @@
-from curses.panel import new_panel
-from re import L
-
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -13,3 +9,12 @@ class Stack:
         self.top = new_node
         self.height = 1
 
+    def print_stack(self):
+        temp = self.top
+        while temp:
+            print(temp.value)
+            temp = temp.next
+
+
+my_Stack = Stack(3)
+my_Stack.print_stack()
