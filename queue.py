@@ -1,6 +1,3 @@
-from hashlib import new
-
-
 class Node:
     def __init__(self, value):
         self.value = value
