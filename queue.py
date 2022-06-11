@@ -1,3 +1,6 @@
+from hashlib import new
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -16,5 +19,18 @@ class Queue:
             print(temp.value)
             temp = temp.next
 
-my_queue = Queue(4) 
+    def enqueue(self, value):      #adding element to lat of queue
+        new_node = Node(value)
+        if self.length==0:
+            self.first = new_node
+            self.last = new_node
+        else:
+            self.last.next = new_node
+            self.last = new_node
+        self.length+=1
+
+my_queue = Queue(1) 
+my_queue.print_queue()
+
+my_queue.enqueue(2)
 my_queue.print_queue()
