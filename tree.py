@@ -1,10 +1,3 @@
-from hashlib import new
-from tkinter.messagebox import NO
-from numpy import MAY_SHARE_EXACT
-
-from sympy import N
-
-
 class Node:
     def __init__ (self, value):
         self.value = value
