@@ -1,8 +1,3 @@
-from tempfile import tempdir
-
-from sympy import re, real_root
-
-
 class Node:
     def __init__ (self, value):
         self.value = value
@@ -54,6 +49,11 @@ class BinarySearchTree:
         
         return False
 
+    def min_value_code(self, current_node):
+        while current_node.left is not None:
+            current_node = current_node.left
+        return current_node
+
 
 my_tree = BinarySearchTree()
 my_tree.insert(2)
@@ -64,3 +64,6 @@ print(my_tree.root.left.value)
 print(my_tree.root.right.value)
 
 print(my_tree.contains(1))
+
+print(my_tree.min_value_code(my_tree.root))
+print(my_tree.min_value_code(my_tree.root.right))
