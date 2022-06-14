@@ -1,3 +1,8 @@
+from tempfile import tempdir
+
+from sympy import re, real_root
+
+
 class Node:
     def __init__ (self, value):
         self.value = value
@@ -32,12 +37,30 @@ class BinarySearchTree:
                     return True
                 temp = temp.right
 
+    def contains(self, value):
+        #these 2 lines not really reqd.
+        # if self.root is None:
+        #     return False
+        
+        temp = self.root
+
+        while temp is not None:
+            if value < temp.value:
+                temp = temp.left
+            elif value > temp.value:
+                temp = temp.right
+            else:
+                return True
+        
+        return False
+
 
 my_tree = BinarySearchTree()
 my_tree.insert(2)
 my_tree.insert(1)
 my_tree.insert(3)
-
 print(my_tree.root.value)
 print(my_tree.root.left.value)
 print(my_tree.root.right.value)
+
+print(my_tree.contains(1))
